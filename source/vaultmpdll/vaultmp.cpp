@@ -101,51 +101,51 @@ static unsigned int anim = 0x00;
 static unsigned int* _anim = NULL;
 static float PlaceAtMe_data[6];
 
-static const unsigned pluginsVMP = 0x00E10FF1;
-static const unsigned PlayGroup = 0x0045F704;
-static const unsigned delegator_src = 0x006EEC86;
-static const unsigned delegator_dest = 0x006EDBD9;
-static const unsigned delegatorCall_src = 0x006EDBDA;
-static const unsigned delegatorCall_dest = (unsigned)& BethesdaDelegator;
-static const unsigned noRespawn_NOP = 0x006D5965; // 2x NOP
-static const unsigned noRespawn_jmp_src = 0x0078B230;
-static const unsigned noRespawn_jmp_dest = 0x0078B2B9;
-static const unsigned noRespawn_jmp_detour = (unsigned)& RespawnDetour;
-static const unsigned playIdle_call_src = 0x0073BB20;
-static const unsigned playIdle_call_dest = (unsigned)& AnimDetour;
-static const unsigned playIdle_fix_src = 0x00534D8D;
-static const unsigned playIdle_fix_dest = (unsigned)& PlayIdleDetour;
-static const unsigned matchRace_NOP1 = 0x0052F4DD;
-static const unsigned matchRace_NOP2 = 0x0052F50F;
-static const unsigned matchRace_patch = 0x0052F513;
-static const unsigned matchRace_param = 0x00F51ADC;
-static const unsigned LockFix = 0x00527F33;
-static const unsigned aiFix1 = 0x0072051E;
-static const unsigned aiFix2 = 0x006FAEE8;
-static const unsigned aiFix3 = 0x006FAF19;
-static const unsigned aiFix4 = 0x0042FBDC;
-static const unsigned playGroup_fix = 0x0049DD6A;
-static const unsigned playGroup_fix_src = 0x0049DD8E;
-static const unsigned playGroup_fix_dest = 0x0049DCF1;
-static unsigned AVFix_src = 0x00473D35;
-static unsigned AVFix_dest = (unsigned)& AVFix;
-static unsigned AVFix_ret = 0x00473D3B;
-static unsigned AVFix_term = 0x00473E85;
-static unsigned FireFix_jmp = 0x0079236C;
-static unsigned FireFix_patch = 0x007923C5;
-static unsigned GetActivate_jmp = 0x0078A68D;
-static unsigned GetActivate_dest = (unsigned)& GetActivate;
-static unsigned GetActivate_ret = 0x0078A995;
-static unsigned PlaceAtMe_jmp = 0x00539785;
-static unsigned PlaceAtMe_dest = (unsigned)& PlaceAtMe;
-static unsigned PlaceAtMe_call = 0x0043DEF0;
-static unsigned PlaceAtMe_ret = PlaceAtMe_jmp + 5;
-static unsigned PlaceAtMe_fix = 0x006F1CB6;
-static unsigned PlaceAtMe_fix_dest = 0x006F1F6E;
-static unsigned FireWeapon_jmp = 0x0071F05F;
-static unsigned FireWeapon_dest = (unsigned)& FireWeapon;
-static unsigned FireWeapon_call = 0x004BE1A0;
-static unsigned FireWeapon_ret = FireWeapon_jmp + 5;
+// static const unsigned pluginsVMP = 0x00E10FF1;
+// static const unsigned PlayGroup = 0x0045F704;
+// static const unsigned delegator_src = 0x006EEC86;
+// static const unsigned delegator_dest = 0x006EDBD9;
+// static const unsigned delegatorCall_src = 0x006EDBDA;
+// static const unsigned delegatorCall_dest = (unsigned)& BethesdaDelegator;
+// static const unsigned noRespawn_NOP = 0x006D5965; // 2x NOP
+// static const unsigned noRespawn_jmp_src = 0x0078B230;
+// static const unsigned noRespawn_jmp_dest = 0x0078B2B9;
+// static const unsigned noRespawn_jmp_detour = (unsigned)& RespawnDetour;
+// static const unsigned playIdle_call_src = 0x0073BB20;
+// static const unsigned playIdle_call_dest = (unsigned)& AnimDetour;
+// static const unsigned playIdle_fix_src = 0x00534D8D;
+// static const unsigned playIdle_fix_dest = (unsigned)& PlayIdleDetour;
+// static const unsigned matchRace_NOP1 = 0x0052F4DD;
+// static const unsigned matchRace_NOP2 = 0x0052F50F;
+// static const unsigned matchRace_patch = 0x0052F513;
+// static const unsigned matchRace_param = 0x00F51ADC;
+// static const unsigned LockFix = 0x00527F33;
+// static const unsigned aiFix1 = 0x0072051E;
+// static const unsigned aiFix2 = 0x006FAEE8;
+// static const unsigned aiFix3 = 0x006FAF19;
+// static const unsigned aiFix4 = 0x0042FBDC;
+// static const unsigned playGroup_fix = 0x0049DD6A;
+// static const unsigned playGroup_fix_src = 0x0049DD8E;
+// static const unsigned playGroup_fix_dest = 0x0049DCF1;
+// static unsigned AVFix_src = 0x00473D35;
+// static unsigned AVFix_dest = (unsigned)& AVFix;
+// static unsigned AVFix_ret = 0x00473D3B;
+// static unsigned AVFix_term = 0x00473E85;
+// static unsigned FireFix_jmp = 0x0079236C;
+// static unsigned FireFix_patch = 0x007923C5;
+// static unsigned GetActivate_jmp = 0x0078A68D;
+// static unsigned GetActivate_dest = (unsigned)& GetActivate;
+// static unsigned GetActivate_ret = 0x0078A995;
+// static unsigned PlaceAtMe_jmp = 0x00539785;
+// static unsigned PlaceAtMe_dest = (unsigned)& PlaceAtMe;
+// static unsigned PlaceAtMe_call = 0x0043DEF0;
+// static unsigned PlaceAtMe_ret = PlaceAtMe_jmp + 5;
+// static unsigned PlaceAtMe_fix = 0x006F1CB6;
+// static unsigned PlaceAtMe_fix_dest = 0x006F1F6E;
+// static unsigned FireWeapon_jmp = 0x0071F05F;
+// static unsigned FireWeapon_dest = (unsigned)& FireWeapon;
+// static unsigned FireWeapon_call = 0x004BE1A0;
+// static unsigned FireWeapon_ret = FireWeapon_jmp + 5;
 
 // Those snippets / functions are from FOSE / NVSE, thanks
 
@@ -402,12 +402,12 @@ bool vaultfunction(void* reference, void* result, void* args, unsigned short opc
 					if (((GetAsyncKeyState(MapVirtualKey(forward, 1)) & 0x8000) && (GetAsyncKeyState(MapVirtualKey(left, 1)) & 0x8000))
 							|| ((GetAsyncKeyState(MapVirtualKey(backward, 1)) & 0x8000) && (GetAsyncKeyState(MapVirtualKey(right, 1)) & 0x8000)))
 					{
-						flags |= 0x01; // that equals to a Z-angle correction of -45²
+						flags |= 0x01; // that equals to a Z-angle correction of -45Â²
 					}
 					else if (((GetAsyncKeyState(MapVirtualKey(forward, 1)) & 0x8000) && (GetAsyncKeyState(MapVirtualKey(right, 1)) & 0x8000))
 							 || ((GetAsyncKeyState(MapVirtualKey(backward, 1)) & 0x8000) && (GetAsyncKeyState(MapVirtualKey(left, 1)) & 0x8000)))
 					{
-						flags |= 0x02; // that equals to a Z-angle correction of 45²
+						flags |= 0x02; // that equals to a Z-angle correction of 45Â²
 					}
 				}
 
@@ -1230,73 +1230,74 @@ void ToggleRespawn()
 void PatchGame(HINSTANCE& silverlock)
 {
 	// Loading FOSE
-	silverlock = LoadLibrary("fose_1_7_vmp.dll");
+	//silverlock = LoadLibrary("fose_1_7_vmp.dll");
+	silverlock = LoadLibrary("f4se_1_9_4.dll");
 
 	if (silverlock == NULL)
 		DLLerror = true;
 	else
 	{
 		// FOSE authors thought it was a smart move to prevent disabling ESC and console key
-		unsigned int codebase = (DWORD) silverlock + 0x1000;
-		unsigned char NOP[] = {0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90};
+		//unsigned int codebase = (DWORD) silverlock + 0x1000;
+		//unsigned char NOP[] = {0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90};
 
-		SafeWriteBuf(codebase + 0x14222, NOP, sizeof(NOP));
-		SafeWriteBuf(codebase + 0x14260, NOP, sizeof(NOP));
+		//SafeWriteBuf(codebase + 0x14222, NOP, sizeof(NOP));
+		//SafeWriteBuf(codebase + 0x14260, NOP, sizeof(NOP));
 	}
 
 	unsigned char NOP[] = {0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90};
 
-	FormLookup = (decltype(FormLookup)) LOOKUP_FORM;
-	FuncLookup = (decltype(FuncLookup)) LOOKUP_FUNC;
-	QueueUIMessage = (decltype(QueueUIMessage)) QUEUE_UI_MESSAGE;
-	SetPos = (decltype(SetPos)) SETPOS;
+	// FormLookup = (decltype(FormLookup)) LOOKUP_FORM;
+	// FuncLookup = (decltype(FuncLookup)) LOOKUP_FUNC;
+	// QueueUIMessage = (decltype(QueueUIMessage)) QUEUE_UI_MESSAGE;
+	// SetPos = (decltype(SetPos)) SETPOS;
 
-	SafeWrite8(delegator_dest, 0x51);   // PUSH ECX
-	SafeWrite8(delegatorCall_src + 5, 0x59);   // POP ECX
-	SafeWrite8(PlayGroup, 0xEB);   // JMP SHORT
-	SafeWrite16(playIdle_fix_src + 5, 0x9090); // NOP NOP
-	SafeWrite16(LockFix, 0x9090); // NOP NOP
-	SafeWrite16(aiFix1, 0x9090); // NOP NOP
-	SafeWrite8(aiFix2, 0x30); // redirect local jump to below
+	// SafeWrite8(delegator_dest, 0x51);   // PUSH ECX
+	// SafeWrite8(delegatorCall_src + 5, 0x59);   // POP ECX
+	// SafeWrite8(PlayGroup, 0xEB);   // JMP SHORT
+	// SafeWrite16(playIdle_fix_src + 5, 0x9090); // NOP NOP
+	// SafeWrite16(LockFix, 0x9090); // NOP NOP
+	// SafeWrite16(aiFix1, 0x9090); // NOP NOP
+	// SafeWrite8(aiFix2, 0x30); // redirect local jump to below
 
-	unsigned char aiFix3_[] = {0x85, 0xFF, 0x74, 0xCC, 0xEB, 0xF6};
-	SafeWriteBuf(aiFix3, aiFix3_, sizeof(aiFix3_));
+	// unsigned char aiFix3_[] = {0x85, 0xFF, 0x74, 0xCC, 0xEB, 0xF6};
+	// SafeWriteBuf(aiFix3, aiFix3_, sizeof(aiFix3_));
 
-	SafeWriteBuf(aiFix4, NOP, 11); // 11x NOP
+	// SafeWriteBuf(aiFix4, NOP, 11); // 11x NOP
 
-	SafeWriteBuf(matchRace_NOP1, NOP, sizeof(NOP));
-	SafeWriteBuf(matchRace_NOP2, NOP, 3);
-	SafeWrite8(matchRace_patch + 1, 0xF1);
-	SafeWriteBuf(matchRace_patch + 2, NOP, 4);
-	SafeWrite8(matchRace_param, 0x0F);
+	// SafeWriteBuf(matchRace_NOP1, NOP, sizeof(NOP));
+	// SafeWriteBuf(matchRace_NOP2, NOP, 3);
+	// SafeWrite8(matchRace_patch + 1, 0xF1);
+	// SafeWriteBuf(matchRace_patch + 2, NOP, 4);
+	// SafeWrite8(matchRace_param, 0x0F);
 
-	unsigned char jmp[] = {0xEB, 0x57, 0x90};
-	unsigned char patch[] = {0x85, 0xED, 0x74, 0xE8, 0x8B, 0x55, 0x00, 0xEB, 0xA1};
-	SafeWriteBuf(FireFix_jmp, jmp, sizeof(jmp));
-	SafeWriteBuf(FireFix_patch, patch, sizeof(patch));
+	// unsigned char jmp[] = {0xEB, 0x57, 0x90};
+	// unsigned char patch[] = {0x85, 0xED, 0x74, 0xE8, 0x8B, 0x55, 0x00, 0xEB, 0xA1};
+	// SafeWriteBuf(FireFix_jmp, jmp, sizeof(jmp));
+	// SafeWriteBuf(FireFix_patch, patch, sizeof(patch));
 
-	WriteRelCall(delegatorCall_src, delegatorCall_dest);
-	WriteRelCall(delegator_src, delegator_dest);
-	WriteRelCall(playIdle_fix_src, playIdle_fix_dest);
-	WriteRelJump(playIdle_call_src, playIdle_call_dest);
-	WriteRelJump(AVFix_src, AVFix_dest);
+	// WriteRelCall(delegatorCall_src, delegatorCall_dest);
+	// WriteRelCall(delegator_src, delegator_dest);
+	// WriteRelCall(playIdle_fix_src, playIdle_fix_dest);
+	// WriteRelJump(playIdle_call_src, playIdle_call_dest);
+	// WriteRelJump(AVFix_src, AVFix_dest);
 
-	unsigned char playGroup_fix_A[] = {0x85, 0xC9, 0x0F, 0x84, 0xFF, 0x00, 0x00, 0x00, 0x8B, 0x71, 0x0C, 0x85, 0xF6, 0xEB, 0x6A};
-	unsigned char playGroup_fix_B[] = {0xEB, 0x27};
-	SafeWriteBuf(playGroup_fix_dest, playGroup_fix_A, sizeof(playGroup_fix_A));
-	SafeWriteBuf(playGroup_fix, playGroup_fix_B, sizeof(playGroup_fix_B));
-	WriteRelJump(playGroup_fix_src, playGroup_fix_dest);
+	// unsigned char playGroup_fix_A[] = {0x85, 0xC9, 0x0F, 0x84, 0xFF, 0x00, 0x00, 0x00, 0x8B, 0x71, 0x0C, 0x85, 0xF6, 0xEB, 0x6A};
+	// unsigned char playGroup_fix_B[] = {0xEB, 0x27};
+	// SafeWriteBuf(playGroup_fix_dest, playGroup_fix_A, sizeof(playGroup_fix_A));
+	// SafeWriteBuf(playGroup_fix, playGroup_fix_B, sizeof(playGroup_fix_B));
+	// WriteRelJump(playGroup_fix_src, playGroup_fix_dest);
 
-	WriteRelCall(GetActivate_jmp, GetActivate_dest);
-	WriteRelJump(GetActivate_jmp + 5, GetActivate_ret);
+	// WriteRelCall(GetActivate_jmp, GetActivate_dest);
+	// WriteRelJump(GetActivate_jmp + 5, GetActivate_ret);
 
-	WriteRelJump(PlaceAtMe_jmp, PlaceAtMe_dest);
-	WriteRelJump(PlaceAtMe_fix, PlaceAtMe_fix_dest);
-	SafeWriteBuf(PlaceAtMe_fix + 5, NOP, 1);
+	// WriteRelJump(PlaceAtMe_jmp, PlaceAtMe_dest);
+	// WriteRelJump(PlaceAtMe_fix, PlaceAtMe_fix_dest);
+	// SafeWriteBuf(PlaceAtMe_fix + 5, NOP, 1);
 
-	WriteRelJump(FireWeapon_jmp, FireWeapon_dest);
+	// WriteRelJump(FireWeapon_jmp, FireWeapon_dest);
 
-	SafeWrite32(pluginsVMP, *(DWORD*)".vmp"); // redirect Plugins.txt
+	// SafeWrite32(pluginsVMP, *(DWORD*)".vmp"); // redirect Plugins.txt
 
 	ToggleRespawn();
 }
